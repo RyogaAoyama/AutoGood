@@ -1,0 +1,17 @@
+{
+  "name": "YYC自動いいね",
+  "manifest_version": 2,
+  "version": "1.0",
+  "browser_action": {
+    "default_title": "YYC自動いいね",
+    "default_popup": "index.html"
+  },
+
+  "content_scripts": [
+    {
+      "js": ["autoGood.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "permissions": ["tabs", "https://*/*", "background"]
+}
