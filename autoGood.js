@@ -5,8 +5,12 @@ const INTERVAL = 1500;
 const TIMEOUT_LIMIT = 5;
 
 chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
+  // 接続タイプがrequestじゃなかったら何もせず処理終了
+  if (msg.type != "request") return;
+
   let notice = "";
   let exec_num = 0;
+
   while (true) {
     // ボタンを取得
     let btnType = document.getElementById("btnType");
@@ -44,7 +48,7 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
         break;
       }
     }
+    await new Promise(resolve => setTimeout(resolve, INTERVAL));
   }
-  console.log(notice);
-  sendResponse("test");
+  chrome.runtime.sendMessage({ type: "response", notice });
 });

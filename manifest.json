@@ -13,5 +13,5 @@
       "matches": ["http://*/*", "https://*/*"]
     }
   ],
-  "permissions": ["tabs", "https://*/*"]
+  "permissions": ["tabs", "https://*/*", "background"]
 }
